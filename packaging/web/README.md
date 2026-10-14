@@ -15,33 +15,9 @@ There is no server-side code. Upload the folder's contents anywhere that serves 
 
 ## Docker
 
-### Run the published image on macOS
-
-After installing and starting Docker Desktop, run:
-
-```sh
-docker run --pull=always -d --name photocraft --restart unless-stopped \
-  -p 127.0.0.1:8080:8080 ghcr.io/idemax/photocraft:latest
-```
-
-Then open **http://localhost:8080/**. Docker pulls the image on first run. It is published for
-Linux `amd64` and `arm64`, covering Intel and Apple silicon Macs. Docker Desktop provides the
-Linux environment; this is the PhotoCraft web build served in a browser, not the native macOS
-desktop app. The editor processes images in the browser on the Mac. The container serves static
-files and does not store documents. Save or export your work before closing or reloading the page.
-
-To reuse the container, run `docker start photocraft`; stop it with `docker stop photocraft`.
-To update, remove it with `docker rm -f photocraft`, then repeat the run command. The `--pull=always`
-option checks for a newer image before starting.
-
-The image is built and published to GitHub Container Registry by
-[`docker-image.yml`](../../.github/workflows/docker-image.yml) after changes reach this fork's
-`main` branch and for version tags. Pull requests build both CPU architectures without publishing.
-
 > The Docker recipe (`Dockerfile`, `.dockerignore`, `packaging/web/nginx.conf`) is
-> **community-maintained** and is not part of the official upstream release pipeline. This fork
-> builds and publishes its own image, which can lag behind the official web build above. Fixes are
-> welcome.
+> **community-maintained**: it is not built in CI or used for releases, so it can lag behind the
+> official web build above. Fixes are welcome.
 
 From the repository root (Docker is the only build prerequisite):
 

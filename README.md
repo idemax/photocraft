@@ -252,23 +252,6 @@ The desktop app also offers an authenticated, loopback-only control channel (`ph
 
 ## Get started
 
-### Run the web edition in Docker on macOS
-
-Install and start Docker Desktop, then run this command in Terminal:
-
-```sh
-docker run --pull=always -d --name photocraft --restart unless-stopped \
-  -p 127.0.0.1:8080:8080 ghcr.io/idemax/photocraft:latest
-```
-
-Open **http://localhost:8080/**. Docker downloads the image automatically. It supports
-Apple silicon and Intel Macs. This runs PhotoCraft's browser edition in your browser; it does
-not run the native macOS app. Editing and image processing happen on your Mac in the browser,
-and documents are not stored in the container. Use Save or Export to download your work.
-
-To start it again after stopping Docker Desktop, run `docker start photocraft`. To stop it,
-run `docker stop photocraft`. To update, run `docker rm -f photocraft`, then run the command above again.
-
 ```sh
 git clone https://github.com/storytold/photocraft
 cd photocraft
